@@ -34,12 +34,16 @@
         >{{ word }}
       </div>
     </div>
-    <v-btn class="bg-yellow-200 w-1/3 text-gray-900 font-bold self-center">I Wrote this</v-btn>
+    <v-btn
+      @click="checkWords"
+      class="bg-yellow-200 w-1/3 text-gray-900 font-bold self-center"
+      >I Wrote this</v-btn
+    >
   </div>
 </template>
 
 <script>
-import { ethers } from "ethers";
+import { Wallet, utils } from "ethers";
 
 export default {
   name: "LayerMnemonic",
@@ -54,18 +58,16 @@ export default {
     };
   },
   methods: {
-    generateRandom(maxLimit = 2047) {
-      let rand = Math.random() * maxLimit;
-      rand = Math.floor(rand);
-
-      return rand;
-    },
     generateWords() {
-      let wordlist = ethers.wordlists.en;
-      this.wordsList = [];
-
-      for (let i = 0; i < this.selectedWordsCount; i++) {
-        this.wordsList.push(wordlist.getWord(this.generateRandom()));
+      let mnemo = "";
+      if (this.selectedWordsCount === 12) {
+        mnemo = utils.entropyToMnemonic(utils.randomBytes(16));
+      }
+      if (this.selectedWordsCount === 24) {
+        mnemo = utils.entropyToMnemonic(utils.randomBytes(32));
+      }
+      if (mnemo?.length) {
+        this.wordsList = mnemo.split(" ");
       }
     },
   },
