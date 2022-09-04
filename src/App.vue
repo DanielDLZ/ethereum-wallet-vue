@@ -1,21 +1,35 @@
 <template>
-  <div class="h-screen" :class="createWallet || showMobileMenu ? 'overflow-y-hidden' : ''">
+  <div
+    class="h-screen"
+    :class="createWallet || showMobileMenu ? 'overflow-y-hidden' : ''"
+  >
     <header>
       <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
     </header>
     <main>
-      <RouterView @create-wallet="createWallet = true" @close-create-wallet="createWallet = false" />
+      <v-btn @click="saveStateInLocalStorage(this.$route.params)">save</v-btn>
+      <RouterView
+        @create-wallet="createWallet = true"
+        @close-create-wallet="createWallet = false"
+      />
     </main>
     <footer>
       <Foobar :footerLinks="footerLinks" class="py-4" />
     </footer>
     <teleport to="body">
-      <MobileNavMenu :show="showMobileMenu" :navLinks="navLinks" @close-menu="showMobileMenu = false" />
+      <MobileNavMenu
+        :show="showMobileMenu"
+        :navLinks="navLinks"
+        @close-menu="showMobileMenu = false"
+      />
     </teleport>
   </div>
 </template>
 
 <script>
+import { mapActions } from "pinia";
+import { useRouterStore } from "@/stores/routerStore";
+
 import Navbar from "@/components/Navbar.vue";
 import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
@@ -70,8 +84,19 @@ export default {
     //   }
     // },
   },
+  methods: {
+    ...mapActions(useRouterStore, [
+      "saveStateInLocalStorage",
+      "loadLocalStorage",
+    ]),
+  },
+  mounted() {
+    this.loadLocalStorage();
+  },
+  beforeUnmounted() {
+    this.saveStateInLocalStorage();
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

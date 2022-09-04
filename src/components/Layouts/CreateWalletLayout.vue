@@ -3,7 +3,7 @@
     <div
       class="inset-0 absolute flex flex-col justify-center z-[20] layout-background"
     >
-      {{routeParameters}}
+      {{ routeParameters }}
       <v-btn
         @click="сloseCreation()"
         class="hover:text-yellow-200 fixed top-2 right-2"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import { useRouterStore } from "@/stores/routerStore";
 
 import LayerMnemonic from "@/components/LayoutsView/LayerMnemonic.vue";
@@ -40,9 +40,7 @@ export default {
       this.$router.go(-1);
       this.$emit("closeCreateWallet");
     },
-  },
-  mounted() {
-    console.log(this.routeParameters);
+    ...mapActions(useRouterStore, ["saveParameters"]),
   },
 };
 </script>

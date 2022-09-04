@@ -9,7 +9,13 @@ export const useRouterStore = defineStore({
     componentName: (state) => state.routeParameters,
   },
   actions: {
-    saveParam(parameter) {
+    loadLocalStorage() {
+      this.routeParameters = localStorage.getItem("router/parameters");
+    },
+    saveStateInLocalStorage(parameters) {
+      localStorage.setItem("router/parameters", JSON.stringify(parameters));
+    },
+    saveParameters(parameter) {
       this.routeParameters = parameter;
     },
     showState() {
