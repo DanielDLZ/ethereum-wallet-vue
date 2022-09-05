@@ -1,7 +1,7 @@
 <template>
   <div class="border-b border-violet-300">
     <div
-      class="flex px-3 h-12 md:h-16 md:px-1 max-w-screen-lg m-auto items-center justify-between md:justify-center my-2">
+      class="flex px-3 h-12 md:h-16 md:px-1 max-w-screen-lg m-auto items-center justify-between md:justify-center">
       <div class="md:w-24">
         <router-link :to="navLinks.logoPath">
           <font-awesome-icon icon="fa-brands fa-ethereum" style="font-size: 26pt" class="logo" />

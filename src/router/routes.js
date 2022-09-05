@@ -7,7 +7,10 @@ import DashboardView from "../views/DashboardView.vue";
 import TermsView from "../views/TermsView.vue";
 import TeamView from "../views/TeamView.vue";
 import PrivacyView from "../views/PrivacyView.vue";
+import ErrorView from "../views/ErrorView.vue";
 import CreateWalletLayout from "@/components/Layouts/CreateWalletLayout.vue";
+
+import { TYPES_OF_CREATION } from "@/router/utils";
 
 export default [
   {
@@ -29,6 +32,14 @@ export default [
     path: "/wallet/create/:type",
     name: "CreateWalletLayout",
     component: CreateWalletLayout,
+    beforeEnter: (to, from, next) => {
+      if (TYPES_OF_CREATION.includes(to.params?.type)) {
+        console.log("ok");
+        next();
+      } else {
+        next("404");
+      }
+    },
   },
   {
     path: "/wallet/access",
@@ -60,5 +71,10 @@ export default [
     path: "/privacy",
     name: "Privacy",
     component: PrivacyView,
+  },
+  {
+    path: "/404",
+    name: "Error",
+    component: ErrorView,
   },
 ];

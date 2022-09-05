@@ -1,25 +1,16 @@
 import { defineStore } from "pinia";
 
 export const useRouterStore = defineStore({
-  id: "asdasd",
+  id: "router",
   state: () => ({
-    routeParameters: "qweq",
+    routeParameters: JSON.stringify({ component: "asd" }),
   }),
   getters: {
     componentName: (state) => state.routeParameters,
   },
   actions: {
-    loadLocalStorage() {
+    exemp() {
       this.routeParameters = localStorage.getItem("router/parameters");
-    },
-    saveStateInLocalStorage(parameters) {
-      localStorage.setItem("router/parameters", JSON.stringify(parameters));
-    },
-    saveParameters(parameter) {
-      this.routeParameters = parameter;
-    },
-    showState() {
-      console.log(this.routeParameters);
     },
   },
 });

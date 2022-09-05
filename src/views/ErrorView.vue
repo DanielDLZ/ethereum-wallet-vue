@@ -1,0 +1,196 @@
+<template>
+  <teleport to="body">
+    <div
+      id="console"
+      class="inset-0 absolute flex flex-col overflow-y-auto px-4 py-8 z-[20] layout text-xs md:text-sm md:px-20 md:py-16"
+      v-focus
+    >
+      <input id="input" @keyup.enter="sendCommand" type="text" v-model="text" />
+      <Logo />
+      <p class="prompt">type help for help</p>
+      <p class="prompt" v-for="(command, index) in commandsArr" :key="command">
+        {{ command }}
+      </p>
+      <p class="fake-input">{{ text }}</p>
+    </div>
+  </teleport>
+</template>
+
+<script>
+import Logo from "@/components/Logo.vue";
+
+export default {
+  data() {
+    return {
+      text: "",
+      commands: [],
+    };
+  },
+  components: {
+    Logo,
+  },
+  computed: {
+    commandsArr() {
+      return this.commands;
+    },
+  },
+  methods: {
+    shuffle(array) {
+      let arr = array.split("");
+      let currentIndex = arr.length,
+        randomIndex;
+
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [arr[currentIndex], arr[randomIndex]] = [
+          arr[randomIndex],
+          arr[currentIndex],
+        ];
+      }
+
+      return arr.join("");
+    },
+    sendCommand() {
+      this.commands.push(this.text);
+      switch (this.text.toLowerCase()) {
+        case "cake":
+          this.commands.push("WIP");
+          break;
+        case "clear":
+          this.commands = [];
+          break;
+        case "exit":
+          this.$router.push("/");
+          break;
+        case "game":
+          this.commands.push("WIP");
+          break;
+        case "hacker":
+          this.commands.push("WIP");
+          break;
+        case "random":
+          for (let i = 0; i < 35; i++) {
+            this.commands.push(
+              this.shuffle("nopqrstuvwxyzABCDEFGHIJKLM1234567890")
+            );
+          }
+          break;
+        case "help": // if (x === 'value2')
+          this.commands.push(`You can type next commands: 
+  
+  cake                 cake is a lie or maybe its true who knows
+  clear                clear screen
+  exit                 go to home page of this site
+  game                 open awesome game
+  hacker               some hackers sim
+  random               generate random 35 string
+  help                 show all commands
+          `);
+          break;
+        default:
+          this.commands.push(
+            `command not recognize type help for command list`
+          );
+          break;
+      }
+      this.text = "";
+    },
+  },
+};
+</script>
+
+<style scoped>
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.layout {
+  background-color: black;
+}
+
+input {
+  outline: none;
+  background-color: #000000;
+  caret-color: black;
+  position: absolute;
+  color: #000000;
+  top: -100px;
+}
+
+#console::-webkit-scrollbar {
+  width: 18px; /* width of the entire scrollbar */
+}
+
+#console::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0); /* color of the tracking area */
+}
+
+#console::-webkit-scrollbar-thumb {
+  background-color: var(--terminal-text); /* color of the scroll thumb */
+  border: 3px solid rgb(0, 0, 0); /* creates padding around scroll thumb */
+}
+
+#console {
+  scrollbar-width: thin;
+  scrollbar-color: var(--terminal-text) rgb(0, 0, 0);
+}
+.prompt {
+  color: var(--terminal-text);
+  display: block;
+  font-family: "AndaleMono", monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  white-space: pre-wrap;
+  text-shadow: 0 0 5px var(--terminal-text);
+  line-height: 1;
+  margin-bottom: 0.75em;
+}
+
+.fake-input::before,
+.prompt::before {
+  content: "> ";
+  display: inline-block;
+}
+
+.fake-input {
+  color: var(--terminal-text);
+  display: block;
+  font-family: "AndaleMono", monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  white-space: pre-wrap;
+  text-shadow: 0 0 5px var(--terminal-text);
+  line-height: 1;
+  margin-bottom: 0.75em;
+}
+
+.fake-input::after {
+  display: inline-block;
+  vertical-align: -0.15em;
+  width: 0.75em;
+  height: 1em;
+  margin-left: 5px;
+  background: #1ff042;
+  box-shadow: 1px 1px 1px rgba(31, 240, 66, 0.65),
+    -1px -1px 1px rgba(31, 240, 66, 0.65), 1px -1px 1px rgba(31, 240, 66, 0.65),
+    -1px 1px 1px rgba(31, 240, 66, 0.65);
+  -webkit-animation: cursor-blink 1.25s steps(1) infinite;
+  -moz-animation: cursor-blink 1.25s steps(1) infinite;
+  animation: cursor-blink 1.25s steps(1) infinite;
+  content: "";
+}
+</style>

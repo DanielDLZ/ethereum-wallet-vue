@@ -35,7 +35,6 @@
       </div>
     </div>
     <v-btn
-      @click="checkWords"
       class="bg-yellow-200 w-1/3 text-gray-900 font-bold self-center"
       >I Wrote this</v-btn
     >
@@ -43,7 +42,7 @@
 </template>
 
 <script>
-import { Wallet, utils } from "ethers";
+import { utils } from "ethers";
 
 export default {
   name: "LayerMnemonic",
@@ -66,7 +65,7 @@ export default {
       if (this.selectedWordsCount === 24) {
         mnemo = utils.entropyToMnemonic(utils.randomBytes(32));
       }
-      if (mnemo?.length) {
+      if (mnemo.length) {
         this.wordsList = mnemo.split(" ");
       }
     },

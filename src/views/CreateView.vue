@@ -26,6 +26,14 @@ export default {
   emits: ["createWallet"],
   methods: {
     createWallet(walletType) {
+      localStorage.setItem(
+        "router/params",
+        JSON.stringify({
+          type: walletType.toLowerCase(),
+          component: walletType,
+        })
+      );
+
       this.$router.push({
         name: "CreateWalletLayout",
         params: {
@@ -33,6 +41,7 @@ export default {
           component: walletType,
         },
       });
+
       this.$emit("createWallet");
     },
   },

@@ -7,7 +7,6 @@
       <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
     </header>
     <main>
-      <v-btn @click="saveStateInLocalStorage(this.$route.params)">save</v-btn>
       <RouterView
         @create-wallet="createWallet = true"
         @close-create-wallet="createWallet = false"
@@ -16,20 +15,15 @@
     <footer>
       <Foobar :footerLinks="footerLinks" class="py-4" />
     </footer>
-    <teleport to="body">
-      <MobileNavMenu
-        :show="showMobileMenu"
-        :navLinks="navLinks"
-        @close-menu="showMobileMenu = false"
-      />
-    </teleport>
+    <MobileNavMenu
+      :show="showMobileMenu"
+      :navLinks="navLinks"
+      @close-menu="showMobileMenu = false"
+    />
   </div>
 </template>
 
 <script>
-import { mapActions } from "pinia";
-import { useRouterStore } from "@/stores/routerStore";
-
 import Navbar from "@/components/Navbar.vue";
 import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
@@ -42,7 +36,7 @@ export default {
   },
   data() {
     return {
-      createWallet: false,
+      createWallet: this.$route.params?.components ? true : false,
       showMobileMenu: false,
       navLinks: {
         logoPath: "/",
@@ -71,30 +65,8 @@ export default {
       },
     };
   },
-  computed: {
-    // isMobile() {
-    //   if (
-    //     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    //       navigator.userAgent
-    //     )
-    //   ) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // },
-  },
-  methods: {
-    ...mapActions(useRouterStore, [
-      "saveStateInLocalStorage",
-      "loadLocalStorage",
-    ]),
-  },
   mounted() {
-    this.loadLocalStorage();
-  },
-  beforeUnmounted() {
-    this.saveStateInLocalStorage();
+    console.log(JSON.parse(localStorage.getItem("router/params"))?.component);
   },
 };
 </script>
