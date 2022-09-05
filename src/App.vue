@@ -65,9 +65,6 @@ export default {
       },
     };
   },
-  mounted() {
-    console.log(JSON.parse(localStorage.getItem("router/params"))?.component);
-  },
 };
 </script>
 

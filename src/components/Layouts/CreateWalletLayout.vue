@@ -17,12 +17,12 @@
 
 <script>
 import LayerMnemonic from "@/components/Layers/LayerMnemonic.vue";
-import LayerPrivateKey from "@/components/Layers/LayerPrivateKey.vue";
+import LayerPrivatekey from "@/components/Layers/LayerPrivateKey.vue";
 
 export default {
   components: {
     LayerMnemonic,
-    LayerPrivateKey,
+    LayerPrivatekey,
   },
   emits: ["closeCreateWallet", "createWallet"],
   computed: {
@@ -35,9 +35,6 @@ export default {
       this.$router.push("/wallet/create");
       this.$emit("closeCreateWallet");
     },
-  },
-  beforeRouteLeave(to, from) {
-    localStorage.setItem("router/params", JSON.stringify(to.params));
   },
 };
 </script>

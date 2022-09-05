@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "LayerPrivateKey",
+  name: "LayerPrivatekey",
 };
 </script>
 

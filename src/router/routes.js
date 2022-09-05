@@ -34,7 +34,15 @@ export default [
     component: CreateWalletLayout,
     beforeEnter: (to, from, next) => {
       if (TYPES_OF_CREATION.includes(to.params?.type)) {
-        console.log("ok");
+        to.params = {
+          ...to.params,
+          ...{
+            component: `${
+              to.params.type[0].toUpperCase() +
+              to.params.type.slice(1, to.params.type.length)
+            }`,
+          },
+        };
         next();
       } else {
         next("404");
