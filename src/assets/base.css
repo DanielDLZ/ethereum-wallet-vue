@@ -19,7 +19,8 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: #e7f0ff;
-  --terminal-text: #1ff042;
+  --terminal-text: #1bd339;
+  --terminal-caret-shadow: #1bd339a6;
 }
 
 /* semantic color variables for this project */

@@ -8,7 +8,7 @@
       <input id="input" @keyup.enter="sendCommand" type="text" v-model="text" />
       <Logo />
       <p class="prompt">type help for help</p>
-      <p class="prompt" v-for="(command, index) in commandsArr" :key="command">
+      <p class="prompt" v-for="(command, index) in commands" :key="command">
         {{ command }}
       </p>
       <p class="fake-input">{{ text }}</p>
@@ -26,15 +26,24 @@ export default {
       commands: [],
     };
   },
+  emits: ["createWallet", "closeCreateWallet"],
   components: {
     Logo,
   },
-  computed: {
-    commandsArr() {
-      return this.commands;
-    },
-  },
   methods: {
+    changeColor(color) {
+      document.documentElement.style.setProperty("--terminal-text", color);
+      document.documentElement.style.setProperty(
+        "--terminal-caret-shadow",
+        color + "a6"
+      );
+      localStorage.setItem("console-theme", color);
+      //blue    1b37d3
+      //red     d31b1b
+      //yellow  d3cd1b
+      //green   1bd339
+      //moon    b5d2f7
+    },
     shuffle(array) {
       let arr = array.split("");
       let currentIndex = arr.length,
@@ -73,6 +82,21 @@ export default {
         case "hacker":
           this.commands.push("WIP");
           break;
+        case "blue":
+          this.changeColor("#1b37d3");
+          break;
+        case "red":
+          this.changeColor("#d31b1b");
+          break;
+        case "green":
+          this.changeColor("#1bd339");
+          break;
+        case "yellow":
+          this.changeColor("#d3cd1b");
+          break;
+        case "moon":
+          this.changeColor("#b5d2f7");
+          break;
         case "random":
           for (let i = 0; i < 35; i++) {
             this.commands.push(
@@ -81,14 +105,19 @@ export default {
           }
           break;
         case "help": // if (x === 'value2')
-          this.commands.push(`You can type next commands: 
-  
+          this.commands.push(`You can type next commands:
+
   cake                 cake is a lie or maybe its true who knows
   clear                clear screen
   exit                 go to home page of this site
   game                 open awesome game
   hacker               some hackers sim
   random               generate random 35 string
+  blue                 blue theme
+  red                  red theme
+  green                green theme (default)
+  yellow               yellow theme
+  moon                 moon theme
   help                 show all commands
           `);
           break;
@@ -100,6 +129,9 @@ export default {
       }
       this.text = "";
     },
+  },
+  mounted() {
+    this.changeColor(localStorage.getItem("console-theme"));
   },
 };
 </script>
@@ -184,10 +216,11 @@ input {
   width: 0.75em;
   height: 1em;
   margin-left: 5px;
-  background: #1ff042;
-  box-shadow: 1px 1px 1px rgba(31, 240, 66, 0.65),
-    -1px -1px 1px rgba(31, 240, 66, 0.65), 1px -1px 1px rgba(31, 240, 66, 0.65),
-    -1px 1px 1px rgba(31, 240, 66, 0.65);
+  background: var(--terminal-text);
+  box-shadow: 1px 1px 1px var(--terminal-caret-shadow),
+    -1px -1px 1px var(--terminal-caret-shadow),
+    1px -1px 1px var(--terminal-caret-shadow),
+    -1px 1px 1px var(--terminal-caret-shadow);
   -webkit-animation: cursor-blink 1.25s steps(1) infinite;
   -moz-animation: cursor-blink 1.25s steps(1) infinite;
   animation: cursor-blink 1.25s steps(1) infinite;
