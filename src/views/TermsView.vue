@@ -111,11 +111,13 @@
           in order to facilitate backups by you, but the Services cannot
           generate a new Private Login Key for your Account. You are solely
           responsible for remembering your Account Private Login
-          Key.&nbsp;<strong>IF YOU HAVE NOT SEPARATELY STORED A BACKUP OF ANY ACCOUNT ADDRESSES
+          Key.&nbsp;<strong
+            >IF YOU HAVE NOT SEPARATELY STORED A BACKUP OF ANY ACCOUNT ADDRESSES
             AND PRIVATE LOGIN KEY OR PRIVATE VIEW/SPEND KEY PAIRS MAINTAINED IN
             YOUR ACCOUNT, YOU ACKNOWLEDGE AND AGREE THAT ANY MONERO YOU HAVE
             ASSOCIATED WITH SUCH ACCOUNT ADDRESSES WILL BECOME INACCESSIBLE IF
-            YOU DO NOT HAVE YOUR ACCOUNT PRIVATE LOGIN KEY.</strong>
+            YOU DO NOT HAVE YOUR ACCOUNT PRIVATE LOGIN KEY.</strong
+          >
         </div>
         <div>&nbsp;</div>
         <div>
@@ -139,8 +141,8 @@
         </div>
         <div>&nbsp;</div>
         <div>
-          <strong>4.4. No Storage or Transmission of Monero.</strong>&nbsp;Monero are an intangible asset, they exist
-          only by virtue of
+          <strong>4.4. No Storage or Transmission of Monero.</strong
+          >&nbsp;Monero are an intangible asset, they exist only by virtue of
           the ownership record maintained in the Monero network. The Services do
           not store, send or receive Monero. Any transfer of title in Monero
           occurs within the decentralized Monero network and not within the
@@ -627,10 +629,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style scoped>
-</style>
