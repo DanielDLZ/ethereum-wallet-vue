@@ -1,5 +1,5 @@
 <template>
-  <div>private key layer</div>
+  <div></div>
 </template>
 
 <script setup></script>

@@ -21,12 +21,12 @@
   </teleport>
 </template>
 
-<script>
-export default {
-  props: ["show", "navLinks"],
-  emits: ["closeMenu"],
-  name: "MobileNavLayout",
-};
+<script setup>
+import { defineProps, defineEmits } from "vue";
+
+const props = defineProps(["show", "navLinks"]);
+
+const emit = defineEmits(["closeMenu"]);
 </script>
 
 <style scoped>

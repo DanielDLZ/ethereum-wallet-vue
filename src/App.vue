@@ -1,15 +1,15 @@
 <template>
   <div
     class="h-screen"
-    :class="createWallet || showMobileMenu ? 'overflow-y-hidden' : ''"
+    :class="walletCreation || showMobileMenu ? 'overflow-y-hidden' : ''"
   >
     <header>
       <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
     </header>
     <main>
       <RouterView
-        @create-wallet="createWallet = true"
-        @close-create-wallet="createWallet = false"
+        @create-wallet="walletCreation = true"
+        @close-create-wallet="walletCreation = false"
       />
     </main>
     <footer>
@@ -23,49 +23,41 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Navbar from "@/components/Navbar.vue";
 import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
+import { ref } from "vue";
 
-export default {
-  components: {
-    Navbar,
-    Foobar,
-    MobileNavMenu,
-  },
-  data() {
-    return {
-      createWallet: this.$route.params?.components ? true : false,
-      showMobileMenu: false,
-      navLinks: {
-        logoPath: "/",
-        siteNav: [
-          { path: "/about", name: "About us" },
-          { path: "/faq", name: "FAQ" },
-        ],
-        walletBtns: [
-          { path: "/wallet/create", name: "Create" },
-          { path: "/wallet/access", name: "Access Wallet" },
-        ],
-      },
-      footerLinks: {
-        firstcol: [
-          { path: "/privacy", name: "Privacy" },
-          { path: "/terms", name: "Terms" },
-        ],
-        secondcol: [{ path: "/team", name: "Team" }],
-        thirdcol: [
-          {
-            path: "https://etherscan.io/address/0xD4F42C8b4F688876D79D2577e2990919d09Ad5De",
-            name: "Privacy",
-          },
-          { path: "/terms", name: "Terms" },
-        ],
-      },
-    };
-  },
-};
+const walletCreation = ref(false);
+const showMobileMenu = ref(false);
+
+const navLinks = ref({
+  logoPath: "/",
+  siteNav: [
+    { path: "/about", name: "About us" },
+    { path: "/faq", name: "FAQ" },
+  ],
+  walletBtns: [
+    { path: "/wallet/create", name: "Create" },
+    { path: "/wallet/access", name: "Access Wallet" },
+  ],
+});
+
+const footerLinks = ref({
+  firstcol: [
+    { path: "/privacy", name: "Privacy" },
+    { path: "/terms", name: "Terms" },
+  ],
+  secondcol: [{ path: "/team", name: "Team" }],
+  thirdcol: [
+    {
+      path: "https://etherscan.io/address/0xD4F42C8b4F688876D79D2577e2990919d09Ad5De",
+      name: "Privacy",
+    },
+    { path: "/terms", name: "Terms" },
+  ],
+});
 </script>
 
 <style scoped></style>

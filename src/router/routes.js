@@ -37,7 +37,7 @@ export default [
         to.params = {
           ...to.params,
           ...{
-            component: `${
+            component: `Layer${
               to.params.type[0].toUpperCase() +
               to.params.type.slice(1, to.params.type.length)
             }`,

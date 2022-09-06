@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <!-- 2th section -->
+    <!-- 2nd section -->
     <div class="bg-gray-100">
       <div
         class="px-6 text-center md:text-right text-indigo-900 content flex items-center justify-between m-auto max-w-screen-lg"
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <!-- 3th section -->
+    <!-- 3rd section -->
     <div
       class="px-6 text-center md:text-right flex content max-w-screen-lg m-auto items-center justify-between"
     >
@@ -89,13 +89,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
+<script setup></script>
 
 <style scoped>
 .greets-content {

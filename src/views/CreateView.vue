@@ -21,23 +21,23 @@
   </div>
 </template>
 
-<script>
-export default {
-  emits: ["createWallet"],
-  methods: {
-    createWallet(walletType) {
-      this.$router.push({
-        name: "CreateWalletLayout",
-        params: {
-          type: walletType.toLowerCase(),
-          component: walletType,
-        },
-      });
+<script setup>
+import { useRouter } from "vue-router";
 
-      this.$emit("createWallet");
+const emit = defineEmits(["createWallet"]);
+const router = useRouter();
+
+function createWallet(walletType) {
+  router.push({
+    name: "CreateWalletLayout",
+    params: {
+      type: walletType.toLowerCase(),
+      component: walletType,
     },
-  },
-};
+  });
+
+  emit("createWallet");
+}
 </script>
 
 <style scoped></style>

@@ -13,35 +13,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "VStepperProgress",
-  props: {
-    stepsCount: {
-      requred: true,
-      type: Number,
-      validator(value) {
-        return value > 1;
-      },
-      default: 3,
+<script setup>
+import { ref } from "vue";
+
+const props = defineProps({
+  stepsCount: {
+    requred: true,
+    type: Number,
+    validator(value) {
+      return value > 1;
     },
-    currentStep: {
-      requred: true,
-      type: Number,
-    },
+    default: 3,
   },
-  data() {
-    return {
-      stepPassed: 0,
-    };
+  currentStep: {
+    requred: true,
+    type: Number,
   },
-  methods: {
-    incr() {
-      this.currentStep++;
-      this.stepPassed++;
-    },
-  },
-};
+});
+
+const stepPassed = ref(0);
 </script>
 
 <style scoped>

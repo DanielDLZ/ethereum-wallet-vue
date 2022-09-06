@@ -9,34 +9,36 @@
         ><font-awesome-icon icon="fa-solid fa-xmark" class="text-2xl"
       /></v-btn>
       <div class="mt-48 px-2 mx-auto md:max-w-screen-xl md:mt-0">
-        <component :is="componentName"></component>
+        <component :is="layers[componentName]"></component>
       </div>
     </div>
   </teleport>
 </template>
 
-<script>
+<script setup>
 import LayerMnemonic from "@/components/Layers/LayerMnemonic.vue";
 import LayerPrivatekey from "@/components/Layers/LayerPrivateKey.vue";
 
-export default {
-  components: {
-    LayerMnemonic,
-    LayerPrivatekey,
-  },
-  emits: ["closeCreateWallet", "createWallet"],
-  computed: {
-    componentName() {
-      return `Layer${this.$route.params?.component}`;
-    },
-  },
-  methods: {
-    сloseCreation() {
-      this.$router.push("/wallet/create");
-      this.$emit("closeCreateWallet");
-    },
-  },
-};
+import { ref } from "vue";
+
+import { computed } from "@vue/reactivity";
+import { useRoute, useRouter } from "vue-router";
+
+const emit = defineEmits(["closeCreateWallet", "createWallet"]);
+
+const route = useRoute();
+const router = useRouter();
+
+const layers = { LayerMnemonic, LayerPrivatekey };
+
+const componentName = computed(() => {
+  return ref(route.params?.component).value;
+});
+
+function сloseCreation() {
+  router.push("/wallet/create");
+  emit("closeCreateWallet");
+}
 </script>
 
 <style scoped>

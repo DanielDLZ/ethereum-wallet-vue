@@ -16,96 +16,91 @@
   </teleport>
 </template>
 
-<script>
+<script setup>
 import Logo from "@/components/Logo.vue";
+import { onMounted, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 
-export default {
-  data() {
-    return {
-      text: "",
-      commands: [],
-    };
-  },
-  emits: ["createWallet", "closeCreateWallet"],
-  components: {
-    Logo,
-  },
-  methods: {
-    changeColor(color) {
-      document.documentElement.style.setProperty("--terminal-text", color);
-      document.documentElement.style.setProperty(
-        "--terminal-caret-shadow",
-        color + "a6"
-      );
-      localStorage.setItem("console-theme", color);
-      //blue    1b37d3
-      //red     d31b1b
-      //yellow  d3cd1b
-      //green   1bd339
-      //moon    b5d2f7
-    },
-    shuffle(array) {
-      let arr = array.split("");
-      let currentIndex = arr.length,
-        randomIndex;
+const text = ref("");
+const commands = ref([]);
+const router = useRouter();
 
-      // While there remain elements to shuffle.
-      while (currentIndex != 0) {
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
+const emit = defineEmits(["createWallet", "closeCreateWallet"]);
 
-        // And swap it with the current element.
-        [arr[currentIndex], arr[randomIndex]] = [
-          arr[randomIndex],
-          arr[currentIndex],
-        ];
+function changeColor(color) {
+  document.documentElement.style.setProperty("--terminal-text", color);
+  document.documentElement.style.setProperty(
+    "--terminal-caret-shadow",
+    color + "a6"
+  );
+  localStorage.setItem("console-theme", color);
+  //blue    1b37d3
+  //red     d31b1b
+  //yellow  d3cd1b
+  //green   1bd339
+  //moon    b5d2f7
+}
+
+function shuffle(array) {
+  let arr = array.split("");
+  let currentIndex = arr.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [arr[currentIndex], arr[randomIndex]] = [
+      arr[randomIndex],
+      arr[currentIndex],
+    ];
+  }
+  return arr.join("");
+}
+
+function sendCommand() {
+  commands.value.push(text.value);
+  switch (text.value.toLowerCase()) {
+    case "cake":
+      commands.value.push("WIP");
+      break;
+    case "clear":
+      commands.value = [];
+      break;
+    case "exit":
+      router.push("/");
+      break;
+    case "game":
+      commands.value.push("WIP");
+      break;
+    case "hacker":
+      commands.value.push("WIP");
+      break;
+    case "blue":
+      changeColor("#1b37d3");
+      break;
+    case "red":
+      changeColor("#d31b1b");
+      break;
+    case "green":
+      changeColor("#1bd339");
+      break;
+    case "yellow":
+      changeColor("#d3cd1b");
+      break;
+    case "moon":
+      changeColor("#b5d2f7");
+      break;
+    case "random":
+      for (let i = 0; i < 35; i++) {
+        commands.value.push(shuffle("nopqrstuvwxyzABCDEFGHIJKLM1234567890"));
       }
-
-      return arr.join("");
-    },
-    sendCommand() {
-      this.commands.push(this.text);
-      switch (this.text.toLowerCase()) {
-        case "cake":
-          this.commands.push("WIP");
-          break;
-        case "clear":
-          this.commands = [];
-          break;
-        case "exit":
-          this.$router.push("/");
-          break;
-        case "game":
-          this.commands.push("WIP");
-          break;
-        case "hacker":
-          this.commands.push("WIP");
-          break;
-        case "blue":
-          this.changeColor("#1b37d3");
-          break;
-        case "red":
-          this.changeColor("#d31b1b");
-          break;
-        case "green":
-          this.changeColor("#1bd339");
-          break;
-        case "yellow":
-          this.changeColor("#d3cd1b");
-          break;
-        case "moon":
-          this.changeColor("#b5d2f7");
-          break;
-        case "random":
-          for (let i = 0; i < 35; i++) {
-            this.commands.push(
-              this.shuffle("nopqrstuvwxyzABCDEFGHIJKLM1234567890")
-            );
-          }
-          break;
-        case "help": // if (x === 'value2')
-          this.commands.push(`You can type next commands:
+      break;
+    case "help": // if (x === 'value2')
+      commands.value.push(`You can type next commands:
 
   cake                 cake is a lie or maybe its true who knows
   clear                clear screen
@@ -120,20 +115,17 @@ export default {
   moon                 moon theme
   help                 show all commands
           `);
-          break;
-        default:
-          this.commands.push(
-            `command not recognize type help for command list`
-          );
-          break;
-      }
-      this.text = "";
-    },
-  },
-  mounted() {
-    this.changeColor(localStorage.getItem("console-theme"));
-  },
-};
+      break;
+    default:
+      commands.value.push(`command not recognize type help for command list`);
+      break;
+  }
+  text.value = "";
+}
+
+onMounted(() => {
+  changeColor(localStorage.getItem("console-theme"));
+});
 </script>
 
 <style scoped>
