@@ -1,7 +1,5 @@
 <template>
-  <v-btn-connect @click="connectMetamask"
-    >Metamask</v-btn-connect
-  >
+  <v-btn-connect @click="connectMetamask">Metamask</v-btn-connect>
 </template>
 
 <script>

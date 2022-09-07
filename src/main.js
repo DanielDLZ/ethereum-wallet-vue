@@ -13,16 +13,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faEthereum, faBtc } from "@fortawesome/free-brands-svg-icons";
 
-// root element
 import App from "./App.vue";
-
-// router
 import router from "./router";
 
-// global component registration
-import components from "@/components/UI";
-
-// some css styles
 import "./assets/main.css";
 import "./index.css";
 
@@ -40,10 +33,6 @@ library.add(
 );
 
 const app = createApp(App);
-
-components.forEach((component) => {
-  app.component(component.name, component);
-});
 
 app.use(createPinia());
 app.use(router);

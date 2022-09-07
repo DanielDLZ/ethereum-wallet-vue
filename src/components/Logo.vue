@@ -28,11 +28,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Logo",
-};
-</script>
+<script setup></script>
 
 <style scoped>
 .logo {

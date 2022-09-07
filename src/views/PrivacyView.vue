@@ -31,7 +31,6 @@
         request will be retained on your device and is not collected by me in
         any way.
       </p>
-      <!---->
       <p><strong>Log Data</strong></p>
       <p>
         I want to inform you that whenever you use my Service, in a case of an
@@ -91,7 +90,6 @@
         practices of any third-party sites or services.
       </p>
       <p><strong>Children’s Privacy</strong></p>
-      <!---->
       <div>
         <p>
           I do not knowingly collect personally identifiable information from

@@ -2,8 +2,6 @@
   <div class="max-w-screen-lg m-auto">wallet</div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style scoped></style>

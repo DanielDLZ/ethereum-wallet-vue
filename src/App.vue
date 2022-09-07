@@ -60,4 +60,12 @@ const footerLinks = ref({
 });
 </script>
 
-<style scoped></style>
+<style>
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-100 text-slate-800 dark:bg-gray-900 dark:text-slate-50;
+}
+</style>

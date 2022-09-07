@@ -8,7 +8,7 @@
       <h4>
         Already have a wallet?
         <router-link
-          class="text-yellow-200 font-bold hover:text-amber-300 duration-200"
+          class="font-bold text-blue-400 hover:text-emerald-400 dark:text-yellow-200 dark:hover:text-amber-300 duration-200"
           to="/wallet/create"
           >Create Wallet</router-link
         >
@@ -21,30 +21,19 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { RouterLink } from "vue-router";
 import Metamask from "@/components/OpenWallet/Metamask.vue";
 import PrivateKey from "@/components/OpenWallet/PrivateKey.vue";
 import Keystore from "@/components/OpenWallet/KeystoreV3.vue";
 import Mnemonic from "@/components/OpenWallet/Mnemonic.vue";
+import { ref } from "vue";
 
-export default {
-  components: {
-    Metamask,
-    PrivateKey,
-    Keystore,
-    Mnemonic,
-  },
-  data() {
-    return {
-      connected: false,
-    };
-  },
-  methods: {
-    connect() {
-      this.connected = true;
-    },
-  },
-};
+const connected = ref(false);
+
+function connect() {
+  connected.value = true;
+}
 </script>
 
 <style scoped></style>

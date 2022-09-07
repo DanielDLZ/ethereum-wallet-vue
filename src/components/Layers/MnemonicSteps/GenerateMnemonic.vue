@@ -2,23 +2,11 @@
   <div class="flex flex-col space-y-6">
     <h1 class="text-2xl font-bold text-left">Write down these words</h1>
     <div class="flex space-x-4 justify-end">
-      <div class="">
+      <div>
         <v-btn @click="generateWords"
           ><font-awesome-icon icon="fa-solid fa-arrow-rotate-right"
         /></v-btn>
-        <select
-          class="px-4 py-2 rounded-sm bg-transparent border border-indigo-200"
-          v-model="selectedWordsCount"
-        >
-          <option
-            v-for="option in options"
-            :value="option.value"
-            :key="option.value"
-            class="bg-transparent"
-          >
-            {{ option.text }}
-          </option>
-        </select>
+        <v-select :options="options" />
       </div>
     </div>
     <div

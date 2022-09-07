@@ -4,29 +4,26 @@
       type="checkbox"
       @input="(event) => $emit('update:checked', event.target.checked)"
       :checked="checked"
-      :id="fieldId"
+      :id="switchId"
       class="mx-2 switch"
     />
-    <label :for="fieldId">
+    <label :for="switchId">
       {{ label }}
     </label>
   </div>
 </template>
 
-<script>
-export default {
-  name: "VSwitchButton",
-  props: {
-    label: String,
-    fieldId: {
-      type: String,
-      required: true,
-    },
-    checked: {
-      type: Boolean,
-    },
+<script setup>
+const props = defineProps({
+  label: String,
+  switchId: {
+    type: String,
+    required: true,
   },
-};
+  checked: {
+    type: Boolean,
+  },
+});
 </script>
 
 <style scoped>

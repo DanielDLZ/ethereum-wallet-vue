@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col">
-    <StepperProgress :currentStep="currentStep" class="mb-12" />
+    <v-stepper-progress :currentStep="currentStep" class="mb-12" />
     <component :is="component[currentComponent]"></component>
-    <v-btn class="bg-yellow-200 mt-24 w-1/3 text-gray-900 font-bold self-center"
+    <v-btn class="bg-yellow-200 my-12 w-1/3 text-gray-900 font-bold self-center"
       >I Wrote this</v-btn
     >
   </div>
@@ -10,7 +10,7 @@
 
 <script setup>
 import GenerateMnemonic from "@/components/Layers/MnemonicSteps/GenerateMnemonic.vue";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import { ref } from "vue";
 import StepperProgress from "../UI/StepperProgress.vue";
 

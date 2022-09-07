@@ -2,10 +2,6 @@
   <v-btn-connect>Mnemonic</v-btn-connect>
 </template>
 
-<script>
-export default {
-  name: "MnemonicConnect",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

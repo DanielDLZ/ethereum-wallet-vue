@@ -8,7 +8,7 @@
       <h4>
         Already have a wallet?
         <router-link
-          class="text-yellow-200 font-bold hover:text-amber-300 duration-200"
+          class="font-bold text-blue-400 hover:text-emerald-400 dark:text-yellow-200 dark:hover:text-amber-300 duration-200"
           to="/wallet/access"
           >Access Wallet</router-link
         >
@@ -23,6 +23,7 @@
 
 <script setup>
 import { useRouter } from "vue-router";
+import VBtnConnect from "@UI/VButtonConnect.vue";
 
 const emit = defineEmits(["createWallet"]);
 const router = useRouter();

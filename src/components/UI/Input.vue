@@ -10,12 +10,9 @@
   />
 </template>
 
-<script>
-export default {
-  name: "VInput",
-  props: ["modelValue", "label"],
-  emits: ["update:modelValue"],
-};
+<script setup>
+const props = defineProps(["modelValue", "label"]);
+const emit = defineEmits(["update:modelValue"]);
 </script>
 
 <style scoped></style>

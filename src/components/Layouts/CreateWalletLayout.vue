@@ -5,7 +5,7 @@
     >
       <v-btn
         @click="сloseCreation()"
-        class="hover:text-yellow-200 fixed top-2 right-2"
+        class="hover:text-yellow-200 absolute top-2 right-2"
         ><font-awesome-icon icon="fa-solid fa-xmark" class="text-2xl"
       /></v-btn>
       <div class="mt-48 px-2 mx-auto md:max-w-screen-xl md:mt-0">
@@ -21,7 +21,7 @@ import LayerPrivatekey from "@/components/Layers/LayerPrivateKey.vue";
 
 import { ref } from "vue";
 
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const emit = defineEmits(["closeCreateWallet", "createWallet"]);

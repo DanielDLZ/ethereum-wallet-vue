@@ -18,7 +18,7 @@
 
 <script setup>
 import Logo from "@/components/Logo.vue";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const text = ref("");
