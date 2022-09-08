@@ -10,6 +10,10 @@ Just my pet project
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
+## LiveDemo
+
+[Ethereum wallet demo](https://phenomenal-starship-231010.netlify.app/)
+
 ## Project Setup
 
 ```sh

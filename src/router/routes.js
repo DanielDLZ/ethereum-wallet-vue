@@ -85,4 +85,9 @@ export default [
     name: "Error",
     component: ErrorView,
   },
+  {
+    path: "/:pathMatch(.*)",
+    name: "Error",
+    component: ErrorView,
+  },
 ];

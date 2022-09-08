@@ -3,9 +3,9 @@
     <h1 class="text-2xl font-bold text-left">Write down these words</h1>
     <div class="flex space-x-4 justify-end">
       <div>
-        <v-btn @click="generateWords"
-          ><font-awesome-icon icon="fa-solid fa-arrow-rotate-right"
-        /></v-btn>
+        <button @click="generateWords">
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" />
+        </button>
         <v-select :options="options" />
       </div>
     </div>
@@ -17,7 +17,7 @@
         :key="index + 'mnemo'"
         class="w-36 px-2 py-2 border rounded border-yellow-200"
       >
-        <span class="text-yellow-200 select-none">{{ index + 1 + ". " }}</span
+        <span class="text-yellow-200 select-none">{{ index+1 + ". " }}</span
         >{{ word }}
       </div>
     </div>
@@ -27,6 +27,8 @@
 <script setup>
 import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
+import VBtn from "@UI/Button.vue";
+import VSelect from "@UI/Button.vue";
 
 const selectedWordsCount = ref(12);
 const wordsList = ref([]);

@@ -1,5 +1,4 @@
 <template>
-  {{ options }}
   <select
     class="px-4 py-2 rounded-sm bg-transparent border border-indigo-200"
     v-model="selected"

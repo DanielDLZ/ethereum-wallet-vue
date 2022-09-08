@@ -31,7 +31,7 @@ const props = defineProps({
   input[type="checkbox"] {
     --active: #211d46;
     --active-inner: #adb3d0;
-    --focus: 2px rgba(39, 94, 254, 0.3);
+    --focus: none;
     --border: #ffd500;
     --border-hover: #275efe;
     --background: #ffffff;

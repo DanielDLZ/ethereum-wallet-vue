@@ -12,7 +12,8 @@
 import GenerateMnemonic from "@/components/Layers/MnemonicSteps/GenerateMnemonic.vue";
 import { computed } from "vue";
 import { ref } from "vue";
-import StepperProgress from "../UI/StepperProgress.vue";
+import VStepperProgress from "@UI/StepperProgress.vue";
+import VBtn from "@UI/Button.vue";
 
 const mnemonicSteps = ref(["GenerateMnemonic"]);
 const currentStep = ref(1);
