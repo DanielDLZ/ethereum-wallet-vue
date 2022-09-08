@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
-import VBtnConnect from "@UI/VButtonConnect.vue";
+import { useRouter, RouterLink } from "vue-router";
+import VBtnConnect from "@UI/ButtonConnect.vue";
 
 const emit = defineEmits(["createWallet"]);
 const router = useRouter();

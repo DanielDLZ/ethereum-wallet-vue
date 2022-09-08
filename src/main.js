@@ -10,6 +10,7 @@ import {
   faBars,
   faArrowRotateRight,
   faCheck,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEthereum, faBtc } from "@fortawesome/free-brands-svg-icons";
 
@@ -29,7 +30,8 @@ library.add(
   faXmark,
   faBars,
   faArrowRotateRight,
-  faCheck
+  faCheck,
+  faCaretDown
 );
 
 const app = createApp(App);

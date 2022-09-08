@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>please confirm lala</div>
 </template>
 
 <script setup></script>

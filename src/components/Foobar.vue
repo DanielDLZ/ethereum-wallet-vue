@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import VLink from "./UI/VLink.vue";
+import VLink from "@UI/Link.vue";
 
 const props = defineProps({
   footerLinks: {

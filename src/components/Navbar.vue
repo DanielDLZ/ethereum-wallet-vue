@@ -62,7 +62,7 @@
 import { onMounted, ref, watch } from "vue";
 import { useDark, useToggle } from "@vueuse/core";
 import VSwitchButton from "@UI/SwitchButton.vue";
-import VLink from "@UI/VLink.vue";
+import VLink from "@UI/Link.vue";
 
 const isDark = useDark({
   valueDark: "dark",
