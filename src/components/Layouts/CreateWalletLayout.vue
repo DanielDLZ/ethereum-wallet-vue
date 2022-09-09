@@ -38,7 +38,7 @@ const componentName = computed(() => {
 
 function сloseCreation() {
   router.push("/wallet/create");
-  store.resetState();
+  walletStore.resetState();
 }
 
 onMounted(() => {
