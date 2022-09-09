@@ -25,8 +25,6 @@ const text = ref("");
 const commands = ref([]);
 const router = useRouter();
 
-const emit = defineEmits(["createWallet", "closeCreateWallet"]);
-
 function changeColor(color) {
   document.documentElement.style.setProperty("--terminal-text", color);
   document.documentElement.style.setProperty(
@@ -102,18 +100,18 @@ function sendCommand() {
     case "help": // if (x === 'value2')
       commands.value.push(`You can type next commands:
 
-  cake                 cake is a lie or maybe its true who knows
-  clear                clear screen
-  exit                 go to home page of this site
-  game                 open awesome game
-  hacker               some hackers sim
-  random               generate random 35 string
-  blue                 blue theme
-  red                  red theme
-  green                green theme (default)
-  yellow               yellow theme
-  moon                 moon theme
-  help                 show all commands
+  cake         cake is a lie
+  clear        clear screen
+  exit         go to home page of this site
+  game         open awesome game
+  hacker       some hackers sim
+  random       generate random 35 string
+  blue         blue theme
+  red          red theme
+  green        green theme (default)
+  yellow       yellow theme
+  moon         moon theme
+  help         show all commands
           `);
       break;
     default:

@@ -7,6 +7,11 @@
       @click="nextStep"
       >{{ btnNames[currentStep - 1] }}</v-btn
     >
+    <!-- <v-btn
+      class="my-12 w-1/3 text-gray-900 font-bold self-center"
+      @click="nextStep"
+      >{{ btnNames[currentStep - 1] }}</v-btn
+    > -->
   </div>
 </template>
 

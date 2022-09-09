@@ -19,7 +19,7 @@
 <script setup>
 import LayerMnemonic from "@/components/Layers/MnemonicLayer.vue";
 import LayerPrivatekey from "@/components/Layers/PrivateKeyLayer.vue";
-import { useWalletStore } from "@/stores/wallet";
+import { useCreatingStore } from "@/stores/creating";
 
 import { onMounted, ref } from "vue";
 
@@ -28,7 +28,7 @@ import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
-const walletStore = useWalletStore();
+const creatingStore = useCreatingStore();
 
 const layers = { LayerMnemonic, LayerPrivatekey };
 
@@ -38,11 +38,11 @@ const componentName = computed(() => {
 
 function сloseCreation() {
   router.push("/wallet/create");
-  walletStore.resetState();
+  creatingStore.resetState();
 }
 
 onMounted(() => {
-  walletStore.creationStarted();
+  creatingStore.creationStarted();
 });
 </script>
 
