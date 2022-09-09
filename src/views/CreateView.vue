@@ -25,7 +25,6 @@
 import { useRouter, RouterLink } from "vue-router";
 import VBtnConnect from "@UI/ButtonConnect.vue";
 
-const emit = defineEmits(["createWallet"]);
 const router = useRouter();
 
 function createWallet(walletType) {
@@ -36,8 +35,6 @@ function createWallet(walletType) {
       component: walletType,
     },
   });
-
-  emit("createWallet");
 }
 </script>
 

@@ -18,14 +18,16 @@ import { ref } from "vue";
 import VStepperProgress from "@UI/StepperProgress.vue";
 import VBtn from "@UI/Button.vue";
 
-const mnemonicSteps = ref(["GenerateMnemonic"]);
-const currentStep = ref(1);
+const mnemonicSteps = ref(["GenerateMnemonic", "ConfirmMnemonic"]);
+const component = { GenerateMnemonic, ConfirmMnemonic };
 
-const component = { GenerateMnemonic };
+const currentStep = ref(1);
 
 const currentComponent = computed(() => {
   return ref(mnemonicSteps.value[currentStep.value - 1]).value;
 });
 
-function nextStep() {}
+function nextStep() {
+  currentStep.value++;
+}
 </script>

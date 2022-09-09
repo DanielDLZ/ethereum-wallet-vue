@@ -32,13 +32,17 @@ import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
 // import VBtn from "@UI/Button.vue";
 import VSelect from "@UI/Select.vue";
+import { useWalletStore } from "@/stores/wallet.js";
 
 const options = ref([
   { text: "12 words", value: 16 },
   { text: "24 words", value: 32 },
 ]);
+
 const selectedOption = ref(options.value[0]);
 const wordsList = ref([]);
+
+const store = useWalletStore();
 
 function generateWords() {
   let mnemo = utils.entropyToMnemonic(
@@ -46,6 +50,7 @@ function generateWords() {
   );
   if (mnemo.length) {
     wordsList.value = mnemo.split(" ");
+    store.saveMnemonic(wordsList.value.join(" "));
   }
 }
 

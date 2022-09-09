@@ -124,7 +124,14 @@ function sendCommand() {
 }
 
 onMounted(() => {
-  changeColor(localStorage.getItem("console-theme"));
+  const colors = ["#1b37d3", "#d31b1b", "#d3cd1b", "#1bd339", "#b5d2f7"];
+  if (colors.includes(localStorage.getItem("console-theme"))) {
+    changeColor(localStorage.getItem("console-theme"));
+  } else {
+    changeColor("#1bd339");
+  }
+
+  console.log();
 });
 </script>
 

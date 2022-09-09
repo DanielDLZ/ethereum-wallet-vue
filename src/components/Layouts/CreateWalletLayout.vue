@@ -9,7 +9,7 @@
       >
         <font-awesome-icon icon="fa-solid fa-xmark" />
       </button>
-      <div class="px-2 mx-auto md:max-w-screen-xl md:mt-0">
+      <div class="px-2 mx-auto md:max-w-screen-xl md:w-700 md:mt-0">
         <component :is="layers[componentName]"></component>
       </div>
     </div>
@@ -19,16 +19,16 @@
 <script setup>
 import LayerMnemonic from "@/components/Layers/MnemonicLayer.vue";
 import LayerPrivatekey from "@/components/Layers/PrivateKeyLayer.vue";
+import { useWalletStore } from "@/stores/wallet";
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
-const emit = defineEmits(["closeCreateWallet", "createWallet"]);
-
 const route = useRoute();
 const router = useRouter();
+const walletStore = useWalletStore();
 
 const layers = { LayerMnemonic, LayerPrivatekey };
 
@@ -38,8 +38,12 @@ const componentName = computed(() => {
 
 function сloseCreation() {
   router.push("/wallet/create");
-  emit("closeCreateWallet");
+  store.resetState();
 }
+
+onMounted(() => {
+  walletStore.creationStarted();
+});
 </script>
 
 <style scoped>

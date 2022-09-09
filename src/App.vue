@@ -1,16 +1,13 @@
 <template>
   <div
     class="h-screen"
-    :class="walletCreation || showMobileMenu ? 'overflow-y-hidden' : ''"
+    :class="walletStore.creation || showMobileMenu ? 'overflow-y-hidden' : ''"
   >
     <header>
       <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
     </header>
     <main>
-      <RouterView
-        @create-wallet="walletCreation = true"
-        @close-create-wallet="walletCreation = false"
-      />
+      <RouterView />
     </main>
     <footer>
       <Foobar :footerLinks="footerLinks" class="py-4" />
@@ -29,8 +26,10 @@ import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
 import { ref } from "vue";
 
-const walletCreation = ref(false);
+import { useWalletStore } from "@/stores/wallet";
 const showMobileMenu = ref(false);
+
+const walletStore = useWalletStore();
 
 const navLinks = ref({
   logoPath: "/",
@@ -61,10 +60,6 @@ const footerLinks = ref({
 </script>
 
 <style>
-html.dark {
-  color-scheme: dark;
-}
-
 body {
   @apply bg-slate-100 text-slate-800 dark:bg-gray-900 dark:text-slate-50;
 }
