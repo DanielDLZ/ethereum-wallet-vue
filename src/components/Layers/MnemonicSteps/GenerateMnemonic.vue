@@ -4,7 +4,7 @@
     <div class="flex space-x-4 justify-end">
       <button
         @click="generateWords"
-        class="mr-4 duration-200 text-emerald-400 hover:text-red-400 dark:text-blue-200 dark:hover:text-yellow-200"
+        class="mr-4 duration-200 hover:rotate-45 text-emerald-400 hover:text-red-400 dark:text-blue-200 dark:hover:text-yellow-200"
       >
         <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" />
       </button>
@@ -62,4 +62,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

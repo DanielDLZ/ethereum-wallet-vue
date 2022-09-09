@@ -24,12 +24,7 @@
       <div
         class="space-x-4 md:hidden mr-5 justify-end flex-auto flex text-right"
       >
-        <v-switch-button
-          v-model:checked="check"
-          class="pt-0.5"
-          switchId="ofkljH"
-          @click="toggleDark()"
-        />
+        <v-switch-button :checked="check" class="mt-0.5" @click="switchBtn()" />
       </div>
       <div class="md:hidden">
         <button
@@ -40,12 +35,7 @@
         </button>
       </div>
       <div class="space-x-4 justify-end flex-auto hidden md:flex text-right">
-        <v-switch-button
-          v-model:checked="check"
-          class="pt-0.5"
-          switchId="ofkljH"
-          @click="toggleDark()"
-        />
+        <v-switch-button :checked="check" class="mt-0.5" @click="switchBtn()" />
         <v-link
           class="text-md font-semibold"
           v-for="btn in navLinks.walletBtns"
@@ -75,11 +65,16 @@ const emit = defineEmits(["mobileMenu"]);
 
 const check = ref(true);
 
+function switchBtn() {
+  check.value = !check.value;
+  toggleDark();
+}
+
 onMounted(() => {
   if (localStorage.getItem("vueuse-color-scheme") === "auto") {
-    check.value = true;
-  } else {
     check.value = false;
+  } else {
+    check.value = true;
   }
 });
 </script>
