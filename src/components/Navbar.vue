@@ -28,7 +28,7 @@
       </div>
       <div class="md:hidden">
         <button
-          @click="$emit('mobileMenu')"
+          @click="globalStore.openMobileNav()"
           class="px-0 py-0 text-emerald-400 dark:text-indigo-200"
         >
           <font-awesome-icon style="font-size: 22pt" icon="fa-solid fa-bars" />
@@ -53,6 +53,7 @@ import { onMounted, ref, watch } from "vue";
 import { useDark, useToggle } from "@vueuse/core";
 import VSwitchButton from "@UI/SwitchButton.vue";
 import VLink from "@UI/Link.vue";
+import { useGlobalStore } from "@/stores/global";
 
 const isDark = useDark({
   valueDark: "dark",
@@ -64,6 +65,8 @@ const props = defineProps(["navLinks"]);
 const emit = defineEmits(["mobileMenu"]);
 
 const check = ref(true);
+
+const globalStore = useGlobalStore();
 
 function switchBtn() {
   check.value = !check.value;

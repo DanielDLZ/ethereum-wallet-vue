@@ -7,7 +7,7 @@ export const useWalletStore = defineStore({
     creation: false,
   }),
   getters: {
-    
+    mnemo: (state) => state.mnemonic,
   },
   actions: {
     saveMnemonic(mnemonic) {

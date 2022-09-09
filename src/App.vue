@@ -1,7 +1,9 @@
 <template>
   <div
     class="h-screen"
-    :class="walletStore.creation || showMobileMenu ? 'overflow-y-hidden' : ''"
+    :class="
+      walletStore.creation || globalStore.mobileMenu ? 'overflow-y-hidden' : ''
+    "
   >
     <header>
       <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
@@ -12,11 +14,7 @@
     <footer>
       <Foobar :footerLinks="footerLinks" class="py-4" />
     </footer>
-    <MobileNavMenu
-      :show="showMobileMenu"
-      :navLinks="navLinks"
-      @close-menu="showMobileMenu = false"
-    />
+    <MobileNavMenu :show="globalStore.mobileMenu" :navLinks="navLinks" />
   </div>
 </template>
 
@@ -27,9 +25,12 @@ import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
 import { ref } from "vue";
 
 import { useWalletStore } from "@/stores/wallet";
+import { useGlobalStore } from "@/stores/global";
+
 const showMobileMenu = ref(false);
 
 const walletStore = useWalletStore();
+const globalStore = useGlobalStore();
 
 const navLinks = ref({
   logoPath: "/",

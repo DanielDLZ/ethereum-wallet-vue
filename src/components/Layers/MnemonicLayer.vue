@@ -5,7 +5,7 @@
     <v-btn
       class="my-12 w-1/3 text-gray-900 font-bold self-center"
       @click="nextStep"
-      >I Wrote these words</v-btn
+      >{{ btnNames[currentStep - 1] }}</v-btn
     >
   </div>
 </template>
@@ -19,6 +19,7 @@ import VStepperProgress from "@UI/StepperProgress.vue";
 import VBtn from "@UI/Button.vue";
 
 const mnemonicSteps = ref(["GenerateMnemonic", "ConfirmMnemonic"]);
+const btnNames = ref(["I Wrote these words", "Next"]);
 const component = { GenerateMnemonic, ConfirmMnemonic };
 
 const currentStep = ref(1);
