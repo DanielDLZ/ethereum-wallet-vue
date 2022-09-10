@@ -1,7 +1,7 @@
 <template>
   <button
     class="px-4 py-4 w-full md:w-auto rounded-sm duration-200 font-semibold disabled:cursor-not-allowed md:py-2"
-    :class="outline ? outlineClass : defaultClass"
+    :class="[outline ? outlineClass : defaultClass, large ? largeClass : '']"
     :disabled="disabled"
   >
     <slot></slot>
@@ -9,7 +9,9 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+
+const largeClass = ref(["text-lg", "md:px-16", "md:py-4", "md:mt-20"]);
 
 const outlineClass = ref([
   "bg-transparent",
@@ -47,6 +49,11 @@ const props = defineProps({
     require: false,
   },
   outline: {
+    type: Boolean,
+    default: false,
+    require: false,
+  },
+  large: {
     type: Boolean,
     default: false,
     require: false,

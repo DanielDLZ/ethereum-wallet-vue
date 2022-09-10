@@ -30,9 +30,10 @@
 <script setup>
 import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
-// import VBtn from "@UI/Button.vue";
 import VSelect from "@UI/Select.vue";
 import { useCreatingStore } from "@/stores/creating";
+
+const creatingStore = useCreatingStore();
 
 const options = ref([
   { text: "12 words", value: 16 },
@@ -41,8 +42,6 @@ const options = ref([
 
 const selectedOption = ref(options.value[0]);
 const wordsList = ref([]);
-
-const creatingStore = useCreatingStore();
 
 function generateWords() {
   let mnemo = utils.entropyToMnemonic(

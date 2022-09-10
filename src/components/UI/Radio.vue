@@ -38,63 +38,23 @@ const handleClick = (event) => {
 </script>
 
 <template>
-  <div>
+  <div class="mx-4 my-2 flex items-center">
     <input
+      class="w-3 h-3 cursor-pointer duration-200 disabled:cursor-not-allowed appearance-none rounded-full ring-2 ring-offset-4 ring-offset-gray-50 bg-gray-100 ring-emerald-400 hover:bg-emerald-200 disabled:hover:bg-gray-100 checked:hover:bg-emerald-400 checked:bg-emerald-400 disabled:ring-gray-400 disabled:checked:bg-gray-400 disabled:checked:hover:bg-gray-400 dark:ring-offset-slate-900 dark:bg-slate-800 dark:ring-yellow-200 dark:hover:bg-yellow-200/[.5] dark:checked:hover:bg-yellow-200 dark:checked:bg-yellow-200 dark:disabled:ring-gray-400 dark:disabled:checked:bg-gray-400 dark:disabled:hover:bg-slate-800 dark:disabled:hover:checked:bg-gray-400"
       type="radio"
       :checked="checked"
+      :disabled="disabled"
       :value="value"
       :name="name"
       :id="id"
       @input="handleClick($event)"
-      class="custom-radio"
     />
-    <label :for="id">{{ label }} </label>
+    <label
+      class="ml-3 text-md cursor-pointer font-medium disabled:cursor-not-allowed text-gray-900 dark:text-gray-300"
+      :for="id"
+      >{{ label }}
+    </label>
   </div>
 </template>
 
-<style scoped>
-.custom-radio {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-.custom-radio + label {
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-  transition: 0.2s;
-  cursor: pointer;
-}
-.custom-radio + label::before {
-  content: "";
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  flex-shrink: 0;
-  flex-grow: 0;
-  border: 2px solid #c4b5fd;
-  border-radius: 50%;
-  margin-right: 0.5em;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 80% 80%;
-}
-.custom-radio:not(:disabled):not(:checked) + label:hover::before {
-  border-color: #c4b5fd;
-}
-.custom-radio:not(:disabled):active + label::before {
-  background-color: #c4b5fd;
-  border-color: #c4b5fd;
-}
-.custom-radio:focus:not(:checked) + label::before {
-  border-color: #80bdff;
-}
-.custom-radio:checked + label::before {
-  border-color: #f3ec8f;
-  background-color: #ffffff00;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23f3ec8f'/%3e%3c/svg%3e");
-}
-.custom-radio:disabled + label::before {
-  background-color: #e9ecef;
-}
-</style>
+<style scoped></style>

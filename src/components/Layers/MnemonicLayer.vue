@@ -1,17 +1,28 @@
 <template>
   <div class="flex flex-col">
-    <v-stepper-progress :currentStep="currentStep" class="mb-12" />
-    <component :is="component[currentComponent]"></component>
-    <v-btn
-      class="my-12 w-1/3 text-gray-900 font-bold self-center"
-      @click="nextStep"
-      >{{ btnNames[currentStep - 1] }}</v-btn
-    >
-    <!-- <v-btn
-      class="my-12 w-1/3 text-gray-900 font-bold self-center"
-      @click="nextStep"
-      >{{ btnNames[currentStep - 1] }}</v-btn
-    > -->
+    <v-stepper-progress
+      :currentStep="currentStep"
+      :hints="hints"
+      class="mb-12"
+    />
+    <KeepAlive>
+      <component :is="component[currentComponent]"></component>
+    </KeepAlive>
+    <div class="flex justify-center space-x-6">
+      <v-btn
+        v-if="currentStep > 1"
+        class="mt-12 w-full text-gray-900 font-bold self-center"
+        @click="backStep"
+        large
+        >Back</v-btn
+      >
+      <v-btn
+        class="mt-12 w-full text-gray-900 font-bold self-center"
+        @click="nextStep"
+        large
+        >{{ btnNames[currentStep - 1] }}</v-btn
+      >
+    </div>
   </div>
 </template>
 
@@ -24,8 +35,10 @@ import VStepperProgress from "@UI/StepperProgress.vue";
 import VBtn from "@UI/Button.vue";
 
 const mnemonicSteps = ref(["GenerateMnemonic", "ConfirmMnemonic"]);
-const btnNames = ref(["I Wrote these words", "Next"]);
+const btnNames = ref(["I Wrote these words", "Next", "Done"]);
 const component = { GenerateMnemonic, ConfirmMnemonic };
+
+const hints = ref(["Write", "Verify", "Done"]);
 
 const currentStep = ref(1);
 
@@ -35,5 +48,8 @@ const currentComponent = computed(() => {
 
 function nextStep() {
   currentStep.value++;
+}
+function backStep() {
+  currentStep.value--;
 }
 </script>

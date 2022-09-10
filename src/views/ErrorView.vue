@@ -100,18 +100,18 @@ function sendCommand() {
     case "help": // if (x === 'value2')
       commands.value.push(`You can type next commands:
 
-  cake         cake is a lie
-  clear        clear screen
-  exit         go to home page of this site
-  game         open awesome game
-  hacker       some hackers sim
-  random       generate random 35 string
-  blue         blue theme
-  red          red theme
-  green        green theme (default)
-  yellow       yellow theme
-  moon         moon theme
-  help         show all commands
+  cake       cake is a lie
+  clear      clear screen
+  exit       home page 
+  game       open game
+  hacker     hacker sim
+  random     random str
+  blue       blue theme
+  red        red theme
+  green      green theme
+  yellow     yellow theme
+  moon       moon theme
+  help       all commands
           `);
       break;
     default:

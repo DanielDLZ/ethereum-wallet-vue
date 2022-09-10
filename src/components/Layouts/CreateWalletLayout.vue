@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <div
-      class="inset-0 absolute flex flex-col justify-start pt-24 md:pt-48 z-[20] bg-slate-100 text-slate-800 dark:bg-gray-900 dark:text-slate-50"
+      class="inset-0 absolute flex flex-col justify-start pt-24 md:pt-32 z-[20] bg-slate-100 text-slate-800 dark:bg-gray-900 dark:text-slate-50"
     >
       <button
         @click="сloseCreation()"

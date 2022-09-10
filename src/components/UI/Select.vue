@@ -13,7 +13,7 @@
     </button>
     <Transition>
       <ol
-        class="border-2 border-emerald-400 bg-gray-100 rounded py-1 absolute top-0 dark:bg-slate-900 z-30 dark:border-blue-200"
+        class="border-2 border-emerald-400 bg-gray-100 rounded py-1 absolute top-0 dark:bg-slate-900 z-30 dark:border-yellow-200"
         v-if="showOptions"
       >
         <li
@@ -66,7 +66,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .v-enter-from,

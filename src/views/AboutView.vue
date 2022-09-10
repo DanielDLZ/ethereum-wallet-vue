@@ -4,6 +4,11 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import VRadio from "@UI/Radio.vue";
+import { ref } from "vue";
+
+const selected = ref({});
+</script>
 
 <style></style>

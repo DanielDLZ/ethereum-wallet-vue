@@ -2,6 +2,10 @@
   <div></div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+    
+});
+</script>
 
 <style scoped></style>

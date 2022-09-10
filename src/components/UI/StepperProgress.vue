@@ -11,6 +11,9 @@
             : 'bg-emerald-400 dark:text-slate-900 dark:bg-yellow-200'
         "
       >
+        <div class="absolute top-11 left-1 text-sm w-16 text-violet-200 text-left">
+          {{ `${hints[index - 1]}` }}
+        </div>
         <Transition mode="out-in">
           <span v-if="index > stepPassed" class="font-bold">{{ index }}</span>
           <font-awesome-icon icon="fa-solid fa-check" v-else />
@@ -28,16 +31,20 @@ import { computed, ref } from "vue";
 
 const props = defineProps({
   stepsCount: {
-    requred: true,
     type: Number,
+    requred: false,
     validator(value) {
       return value > 1;
     },
     default: 3,
   },
   currentStep: {
-    requred: true,
     type: Number,
+    requred: true,
+  },
+  hints: {
+    type: Array,
+    requred: false,
   },
 });
 
