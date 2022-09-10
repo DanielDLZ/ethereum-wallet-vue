@@ -12,7 +12,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## LiveDemo
 
-[Ethereum wallet demo](https://phenomenal-starship-231010.netlify.app/)
+[Etherwallet demo](https://etherwallet-demo-project.netlify.app/)
 
 ## Project Setup
 

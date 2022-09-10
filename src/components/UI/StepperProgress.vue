@@ -27,6 +27,8 @@
 </template>
 
 <script setup>
+//TODO: прописать даркмод для хинтов
+
 import { computed, ref } from "vue";
 
 const props = defineProps({
