@@ -18,12 +18,17 @@
 <script setup>
 import GenerateMnemonic from "@/components/Layers/MnemonicSteps/GenerateMnemonic.vue";
 import ConfirmMnemonic from "@/components/Layers/MnemonicSteps/ConfirmMnemonic.vue";
+import DoneMnemonic from "@/components/Layers/MnemonicSteps/DoneMnemonic.vue";
 import { computed } from "vue";
 import { ref } from "vue";
 import VStepperProgress from "@UI/StepperProgress.vue";
 
-const mnemonicSteps = ref(["GenerateMnemonic", "ConfirmMnemonic"]);
-const component = { GenerateMnemonic, ConfirmMnemonic };
+const mnemonicSteps = ref([
+  "GenerateMnemonic",
+  "ConfirmMnemonic",
+  "DoneMnemonic",
+]);
+const component = { GenerateMnemonic, ConfirmMnemonic, DoneMnemonic };
 
 const hints = ref(["Write", "Verify", "Done"]);
 

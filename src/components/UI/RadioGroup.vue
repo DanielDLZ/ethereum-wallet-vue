@@ -12,6 +12,7 @@
           :label="verifyWords[0]"
           :name="name"
           :value="verifyWords[0]"
+          :id="'id' + verifyWords[0]"
           checked
           class="w-36"
         ></v-radio>
@@ -20,6 +21,7 @@
           :label="verifyWords[1]"
           :name="name"
           :value="verifyWords[1]"
+          :id="'id' + verifyWords[1]"
           class="w-36"
         ></v-radio>
         <v-radio
@@ -27,6 +29,7 @@
           :label="verifyWords[2]"
           :name="name"
           :value="verifyWords[2]"
+          :id="'id' + verifyWords[2]"
           class="w-36"
         ></v-radio>
       </div>
