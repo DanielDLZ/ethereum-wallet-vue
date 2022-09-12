@@ -20,18 +20,14 @@
 import LayerMnemonic from "@/components/Layers/MnemonicLayer.vue";
 import LayerPrivatekey from "@/components/Layers/PrivateKeyLayer.vue";
 import { useCreatingStore } from "@/stores/creating";
-
 import { onMounted, ref } from "vue";
-
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
 const creatingStore = useCreatingStore();
-
 const layers = { LayerMnemonic, LayerPrivatekey };
-
 const componentName = computed(() => {
   return ref(route.params?.component).value;
 });

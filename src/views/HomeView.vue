@@ -34,7 +34,7 @@
       <div class="hidden md:block basis-5/12">
         <img
           class="rounded-sm"
-          src="https://random.imagecdn.app/640/580"
+          src="@/assets/images/placeholder1.jpg"
           alt="img"
         />
       </div>
@@ -48,7 +48,7 @@
         <div class="md:basis-5/12 hidden md:block">
           <img
             class="rounded-sm"
-            src="https://random.imagecdn.app/640/390"
+            src="@/assets/images/placeholder2.jpg"
             alt="img"
           />
         </div>
@@ -75,7 +75,7 @@
       <div class="md:basis-5/12 hidden md:block">
         <img
           class="rounded-sm"
-          src="https://random.imagecdn.app/640/390"
+          src="@/assets/images/placeholder2.jpg"
           alt="img"
         />
       </div>

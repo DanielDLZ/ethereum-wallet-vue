@@ -54,6 +54,7 @@ import VLink from "@UI/Link.vue";
 const props = defineProps({
   footerLinks: {
     type: Object,
+    required: true,
   },
 });
 </script>

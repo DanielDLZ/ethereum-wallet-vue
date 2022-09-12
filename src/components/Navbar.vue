@@ -49,16 +49,13 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useDark, useToggle } from "@vueuse/core";
 import VSwitchButton from "@UI/SwitchButton.vue";
 import VLink from "@UI/Link.vue";
 import { useGlobalStore } from "@/stores/global";
 
-const isDark = useDark({
-  valueDark: "dark",
-  valueLight: "light",
-});
+const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 const props = defineProps(["navLinks"]);

@@ -26,10 +26,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  group: {
-    type: Boolean,
-    default: false,
-  },
 });
 
 const handleClick = (event) => {

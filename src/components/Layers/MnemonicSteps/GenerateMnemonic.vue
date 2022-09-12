@@ -24,14 +24,25 @@
         >{{ word }}
       </div>
     </div>
+    <div class="flex justify-center space-x-12">
+      <v-btn
+        class="my-12 md:mb-0 md:mt-12 w-full text-gray-900 font-bold self-center"
+        @click="emits('nextStep')"
+        large
+        >I Wrote these words</v-btn
+      >
+    </div>
   </div>
 </template>
 
 <script setup>
+import VSelect from "@UI/Select.vue";
+import VBtn from "@UI/Button.vue";
 import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
-import VSelect from "@UI/Select.vue";
 import { useCreatingStore } from "@/stores/creating";
+
+const emits = defineEmits(["nextStep"]);
 
 const creatingStore = useCreatingStore();
 
@@ -56,6 +67,8 @@ function generateWords() {
 function setNewOption(newOption) {
   selectedOption.value = newOption;
 }
+
+function nextStep() {}
 
 watch(selectedOption, () => {
   generateWords();

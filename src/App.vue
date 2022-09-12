@@ -15,14 +15,21 @@
       <Foobar :footerLinks="footerLinks" class="py-4" />
     </footer>
     <MobileNavMenu :show="globalStore.mobileMenu" :navLinks="navLinks" />
+    <Snackbar
+      :isVisible="globalStore.snackVisible"
+      :text="globalStore.snackText"
+      :snackType="globalStore.snackType"
+      :snackDuration="globalStore.snackDuration"
+    ></Snackbar>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
 import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
-import { ref } from "vue";
+import Snackbar from "@/components/Snackbar.vue";
 
 import { useWalletStore } from "@/stores/wallet";
 import { useGlobalStore } from "@/stores/global";

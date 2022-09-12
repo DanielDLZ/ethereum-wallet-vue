@@ -11,7 +11,9 @@
             : 'bg-emerald-400 dark:text-slate-900 dark:bg-yellow-200'
         "
       >
-        <div class="absolute top-11 left-1 text-sm w-16 text-violet-200 text-left">
+        <div
+          class="absolute top-11 text-sm w-16 text-emerald-400 font-bold dark:text-violet-200 text-left"
+        >
           {{ `${hints[index - 1]}` }}
         </div>
         <Transition mode="out-in">

@@ -4,6 +4,10 @@ export const useGlobalStore = defineStore({
   id: "global",
   state: () => ({
     mobileMenu: false,
+    snackText: "",
+    snackVisible: 0,
+    snackType: "info",
+    snackDuration: 2000,
   }),
   getters: {},
   actions: {
@@ -12,6 +16,15 @@ export const useGlobalStore = defineStore({
     },
     closeMobileNav() {
       this.mobileMenu = false;
+    },
+    showSnack(duration = 2000, text = "Here must be text", snackType = "info") {
+      this.snackType = snackType;
+      this.snackText = text;
+      this.snackVisible = this.snackVisible === 0 || this.snackVisible === 1 ? 2 : 1;
+    },
+    resetSnack() {
+      this.snackText = "";
+      this.snackVisible = 0;
     },
   },
 });

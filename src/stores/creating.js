@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import knuthShuffle from "@/utils/knuthShuffle";
 
 export const useCreatingStore = defineStore({
   id: "creating",
@@ -8,23 +9,6 @@ export const useCreatingStore = defineStore({
   }),
   getters: {
     getThreeRandWords: (state) => {
-      function shuffle(array) {
-        let currentIndex = array.length,
-          randomIndex;
-
-        while (currentIndex != 0) {
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex--;
-
-          [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex],
-            array[currentIndex],
-          ];
-        }
-
-        return array;
-      }
-      
       let mnemonicArray = [];
       for (const iterator of Array.of(state.mnemonic.split(" "))[0].entries()) {
         mnemonicArray.push(iterator);
@@ -32,7 +16,7 @@ export const useCreatingStore = defineStore({
 
       let result = [];
       for (let i = 0; i < 3; i++) {
-        result.push(shuffle(mnemonicArray).pop());
+        result.push(knuthShuffle(mnemonicArray).pop());
       }
       return result;
     },
