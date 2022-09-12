@@ -28,7 +28,7 @@
       </div>
       <div class="md:hidden">
         <button
-          @click="globalStore.openMobileNav()"
+          @click="globalStore.openMobileMenu()"
           class="px-0 py-0 text-emerald-400 dark:text-indigo-200"
         >
           <font-awesome-icon style="font-size: 22pt" icon="fa-solid fa-bars" />
@@ -59,7 +59,6 @@ const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 const props = defineProps(["navLinks"]);
-const emit = defineEmits(["mobileMenu"]);
 
 const check = ref(true);
 

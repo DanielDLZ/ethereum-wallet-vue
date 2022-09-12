@@ -42,7 +42,7 @@ import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
 import { useCreatingStore } from "@/stores/creating";
 
-const emits = defineEmits(["nextStep"]);
+const emits = defineEmits(["nextStep", "newMnemonicList"]);
 
 const creatingStore = useCreatingStore();
 
@@ -62,13 +62,12 @@ function generateWords() {
     wordsList.value = mnemo.split(" ");
     creatingStore.saveMnemonic(wordsList.value.join(" "));
   }
+  emits("newMnemonicList", mnemo.split(" "));
 }
 
 function setNewOption(newOption) {
   selectedOption.value = newOption;
 }
-
-function nextStep() {}
 
 watch(selectedOption, () => {
   generateWords();

@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 export const useGlobalStore = defineStore({
   id: "global",
   state: () => ({
-    mobileMenu: false,
+    isMobileMenu: false,
+    isLayout: false,
     snackText: "",
     snackVisible: 0,
     snackType: "info",
@@ -11,16 +12,17 @@ export const useGlobalStore = defineStore({
   }),
   getters: {},
   actions: {
-    openMobileNav() {
+    openMobileMenu() {
       this.mobileMenu = true;
     },
-    closeMobileNav() {
+    closeMobileMenu() {
       this.mobileMenu = false;
     },
     showSnack(duration = 2000, text = "Here must be text", snackType = "info") {
       this.snackType = snackType;
       this.snackText = text;
-      this.snackVisible = this.snackVisible === 0 || this.snackVisible === 1 ? 2 : 1;
+      this.snackVisible =
+        this.snackVisible === 0 || this.snackVisible === 1 ? 2 : 1;
     },
     resetSnack() {
       this.snackText = "";

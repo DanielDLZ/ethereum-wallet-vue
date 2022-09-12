@@ -1,12 +1,10 @@
 <template>
-  <div
-    class="h-screen"
-    :class="
+  <!-- :class="
       walletStore.creation || globalStore.mobileMenu ? 'overflow-y-hidden' : ''
-    "
-  >
+    " -->
+  <div class="h-screen">
     <header>
-      <Navbar :navLinks="navLinks" @mobile-menu="showMobileMenu = true" />
+      <Navbar :navLinks="navLinks" />
     </header>
     <main>
       <RouterView />
@@ -14,7 +12,7 @@
     <footer>
       <Foobar :footerLinks="footerLinks" class="py-4" />
     </footer>
-    <MobileNavMenu :show="globalStore.mobileMenu" :navLinks="navLinks" />
+    <MobileNavMenu :show="globalStore.isMobileMenu" :navLinks="navLinks" />
     <Snackbar
       :isVisible="globalStore.snackVisible"
       :text="globalStore.snackText"
@@ -31,12 +29,8 @@ import Foobar from "@/components/Foobar.vue";
 import MobileNavMenu from "@/components/Layouts/MobileNavLayout.vue";
 import Snackbar from "@/components/Snackbar.vue";
 
-import { useWalletStore } from "@/stores/wallet";
 import { useGlobalStore } from "@/stores/global";
 
-const showMobileMenu = ref(false);
-
-const walletStore = useWalletStore();
 const globalStore = useGlobalStore();
 
 const navLinks = ref({

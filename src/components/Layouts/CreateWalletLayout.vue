@@ -29,7 +29,7 @@ const router = useRouter();
 const creatingStore = useCreatingStore();
 const layers = { LayerMnemonic, LayerPrivatekey };
 const componentName = computed(() => {
-  return ref(route.params?.component).value;
+  return route.params?.component;
 });
 
 function сloseCreation() {

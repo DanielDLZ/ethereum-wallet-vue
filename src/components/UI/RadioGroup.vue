@@ -9,27 +9,13 @@
       <div class="flex flex-col md:flex-row">
         <v-radio
           v-model="word"
-          :label="verifyWords[0]"
+          :label="verifyWords[i - 1]"
           :name="name"
-          :value="verifyWords[0]"
-          :id="'id' + verifyWords[0]"
-          checked
-          class="w-36"
-        ></v-radio>
-        <v-radio
-          v-model="word"
-          :label="verifyWords[1]"
-          :name="name"
-          :value="verifyWords[1]"
-          :id="'id' + verifyWords[1]"
-          class="w-36"
-        ></v-radio>
-        <v-radio
-          v-model="word"
-          :label="verifyWords[2]"
-          :name="name"
-          :value="verifyWords[2]"
-          :id="'id' + verifyWords[2]"
+          :value="verifyWords[i - 1]"
+          :id="'id' + verifyWords[i - 1]"
+          v-for="i in 3"
+          :key="'radioId' + i"
+          :checked="word === verifyWords[i - 1]"
           class="w-36"
         ></v-radio>
       </div>
@@ -39,7 +25,7 @@
 
 <script setup>
 import VRadio from "@UI/Radio.vue";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, inject } from "vue";
 
 const props = defineProps({
   verifyWords: {
@@ -59,7 +45,7 @@ const props = defineProps({
     required: true,
   },
 });
-
+const currentRadioGroup = inject("currentRadioGroup");
 const emits = defineEmits(["radioClicked"]);
 
 const word = ref(props.verifyWords[0]);
@@ -68,9 +54,16 @@ onMounted(() => {
   emits("radioClicked", props.index, word.value);
 });
 
-watch(word, (newArg, oldArg) => {
+watch(word, () => {
   emits("radioClicked", props.index, word.value);
 });
+
+watch(
+  () => currentRadioGroup.value,
+  (newRadio, oldRadio) => {
+    word.value = newRadio[props.index];
+  }
+);
 </script>
 
 <style scoped></style>
