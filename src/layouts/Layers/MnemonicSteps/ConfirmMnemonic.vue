@@ -5,15 +5,15 @@
       <h4>Please select correct words based on their numbers.</h4>
     </div>
     <div class="space-y-6">
-      <v-radio-group
-        :name="`${correctWords[i - 1][0]}word`"
+      <RadioGroup
+        :name="`${correctWords[i - 1][0] + 1}word`"
         :verifyWords="verifyWords[i - 1]"
-        :wordNumber="correctWords[i - 1][0]"
+        :wordNumber="correctWords[i - 1][0] + 1"
         :index="i - 1"
         :key="'radioConfirmId' + i"
-        v-for="i in 3"
+        v-for="i in verifyWords.length"
         @radio-clicked="checkWord"
-      ></v-radio-group>
+      ></RadioGroup>
     </div>
     <div class="flex justify-center space-x-12">
       <v-btn
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import VRadioGroup from "@UI/RadioGroup.vue";
+import RadioGroup from "@/components/RadioGroup.vue";
 import VBtn from "@UI/Button.vue";
 import knuthShuffle from "@/utils/knuthShuffle";
 import { ethers } from "ethers";

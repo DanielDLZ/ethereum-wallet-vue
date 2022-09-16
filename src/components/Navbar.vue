@@ -1,5 +1,5 @@
 <template>
-  <div class="border-b border-emerald-400 dark:border-violet-300">
+  <div class="border-b border-emerald-300 dark:border-violet-300">
     <div
       class="flex px-8 h-12 md:h-16 md:px-8 max-w-screen-lg m-auto items-center justify-between md:justify-center"
     >
@@ -8,7 +8,7 @@
           <font-awesome-icon
             icon="fa-brands fa-ethereum"
             style="font-size: 26pt"
-            class="text-emerald-400 dark:text-violet-300"
+            class="text-emerald-300 dark:text-violet-300"
           />
         </v-link>
       </div>
@@ -28,8 +28,8 @@
       </div>
       <div class="md:hidden">
         <button
-          @click="globalStore.openMobileMenu()"
-          class="px-0 py-0 text-emerald-400 dark:text-indigo-200"
+          @click="globalStore.openMobileMenu"
+          class="px-0 py-0 text-emerald-300 dark:text-indigo-200"
         >
           <font-awesome-icon style="font-size: 22pt" icon="fa-solid fa-bars" />
         </button>

@@ -13,10 +13,10 @@ export const useGlobalStore = defineStore({
   getters: {},
   actions: {
     openMobileMenu() {
-      this.mobileMenu = true;
+      this.isMobileMenu = true;
     },
     closeMobileMenu() {
-      this.mobileMenu = false;
+      this.isMobileMenu = false;
     },
     showSnack(duration = 2000, text = "Here must be text", snackType = "info") {
       this.snackType = snackType;

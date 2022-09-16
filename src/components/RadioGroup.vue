@@ -13,8 +13,8 @@
           :name="name"
           :value="verifyWords[i - 1]"
           :id="'id' + verifyWords[i - 1]"
-          v-for="i in 3"
-          :key="'radioId' + i"
+          v-for="i in verifyWords.length"
+          :key="verifyWords[i - 1]"
           :checked="word === verifyWords[i - 1]"
           class="w-36"
         ></v-radio>
@@ -30,29 +30,25 @@ import { onMounted, ref, watch, inject } from "vue";
 const props = defineProps({
   verifyWords: {
     type: Array,
-    required: true,
+    required: false,
   },
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   wordNumber: {
     type: Number,
-    required: true,
+    required: false,
   },
   index: {
     type: Number,
-    required: true,
+    required: false,
   },
 });
 const currentRadioGroup = inject("currentRadioGroup");
 const emits = defineEmits(["radioClicked"]);
 
 const word = ref(props.verifyWords[0]);
-
-onMounted(() => {
-  emits("radioClicked", props.index, word.value);
-});
 
 watch(word, () => {
   emits("radioClicked", props.index, word.value);

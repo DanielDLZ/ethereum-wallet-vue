@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import GenerateMnemonic from "@/components/Layers/MnemonicSteps/GenerateMnemonic.vue";
-import ConfirmMnemonic from "@/components/Layers/MnemonicSteps/ConfirmMnemonic.vue";
-import DoneMnemonic from "@/components/Layers/MnemonicSteps/DoneMnemonic.vue";
+import GenerateMnemonic from "@/layouts/Layers/MnemonicSteps/GenerateMnemonic.vue";
+import ConfirmMnemonic from "@/layouts/Layers/MnemonicSteps/ConfirmMnemonic.vue";
+import DoneMnemonic from "@/layouts/Layers/MnemonicSteps/DoneMnemonic.vue";
 import VStepperProgress from "@UI/StepperProgress.vue";
 import { computed, ref, provide } from "vue";
 

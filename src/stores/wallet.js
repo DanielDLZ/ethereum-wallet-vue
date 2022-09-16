@@ -4,13 +4,16 @@ export const useWalletStore = defineStore({
   id: "wallet",
   state: () => ({
     mnemonic: "",
+    address: "",
+    isOpen: false,
   }),
   getters: {
     mnemo: (state) => state.mnemonic,
   },
   actions: {
-    saveMnemonic(mnemonic) {
-      this.mnemonic = mnemonic;
+    openAddress(address) {
+      this.address = address;
+      this.isOpen = true;
     },
     resetState() {
       this.mnemonic = "";

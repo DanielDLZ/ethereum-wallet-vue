@@ -5,8 +5,12 @@
 <script setup>
 import VBtnConnect from "@UI/ButtonConnect.vue";
 import web3 from "web3";
+import { useWalletStore } from "@/stores/wallet";
+import { useRouter } from "vue-router";
 
 const emit = defineEmits(["onConnect"]);
+const walletStore = useWalletStore();
+const router = useRouter();
 
 async function connectMetamask() {
   if (typeof window.ethereum !== "undefined") {
@@ -15,11 +19,11 @@ async function connectMetamask() {
       method: "eth_requestAccounts",
     });
 
-    console.log(ethereum);
-
     const account = accounts[0];
-    console.log(account);
+
     if (account !== "undefined" && web3.utils.isAddress(account)) {
+      walletStore.openAddress(account);
+      router.push("/wallet/dashboard");
       emit("onConnect", true);
     }
   } else {

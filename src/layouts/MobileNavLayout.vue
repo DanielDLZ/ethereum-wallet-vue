@@ -1,7 +1,6 @@
 <template>
   <teleport to="body">
     <div
-      v-if="show"
       class="inset-0 h-full absolute z-[20] bg-slate-100 text-slate-800 dark:bg-gray-900 dark:text-slate-50"
     >
       <div class="flex self-start w-full px-2 justify-end">
@@ -41,7 +40,7 @@ import { useGlobalStore } from "@/stores/global";
 
 const globalStore = useGlobalStore();
 
-const props = defineProps(["show", "navLinks"]);
+const props = defineProps(["navLinks"]);
 </script>
 
 <style scoped></style>

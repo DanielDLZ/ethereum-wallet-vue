@@ -11,12 +11,13 @@ import {
   faArrowRotateRight,
   faCheck,
   faCaretDown,
+  faHouse,
+  faPaperPlane,
+  faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEthereum, faBtc } from "@fortawesome/free-brands-svg-icons";
-
 import App from "./App.vue";
 import router from "./router";
-
 import "./assets/main.css";
 import "./index.css";
 
@@ -31,16 +32,16 @@ library.add(
   faBars,
   faArrowRotateRight,
   faCheck,
-  faCaretDown
+  faCaretDown,
+  faHouse,
+  faPaperPlane,
+  faGear
 );
 
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
-
 app.directive("focus", VFocus);
-
 app.component("font-awesome-icon", FontAwesomeIcon);
-
 app.mount("#app");

@@ -40,11 +40,8 @@ import VSelect from "@UI/Select.vue";
 import VBtn from "@UI/Button.vue";
 import { utils } from "ethers";
 import { ref, watch, onMounted } from "vue";
-import { useCreatingStore } from "@/stores/creating";
 
 const emits = defineEmits(["nextStep", "newMnemonicList"]);
-
-const creatingStore = useCreatingStore();
 
 const options = ref([
   { text: "12 words", value: 16 },
@@ -60,7 +57,6 @@ function generateWords() {
   );
   if (mnemo.length) {
     wordsList.value = mnemo.split(" ");
-    creatingStore.saveMnemonic(wordsList.value.join(" "));
   }
   emits("newMnemonicList", mnemo.split(" "));
 }

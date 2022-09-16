@@ -15,9 +15,7 @@
       </h4>
     </div>
     <v-btn-connect @click="createWallet('Mnemonic')">Mnemonic</v-btn-connect>
-    <v-btn-connect @click="createWallet('PrivateKey')"
-      >Private Key</v-btn-connect
-    >
+    <v-btn-connect @click="createWallet('Keystore')">Keystore</v-btn-connect>
   </div>
 </template>
 

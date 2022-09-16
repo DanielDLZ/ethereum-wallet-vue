@@ -17,29 +17,21 @@
 </template>
 
 <script setup>
-import LayerMnemonic from "@/components/Layers/MnemonicLayer.vue";
-import LayerPrivatekey from "@/components/Layers/PrivateKeyLayer.vue";
-import { useCreatingStore } from "@/stores/creating";
-import { onMounted, ref } from "vue";
+import LayerMnemonic from "@/layouts/Layers/MnemonicLayer.vue";
+import LayerKeystore from "@/layouts/Layers/KeystoreLayer.vue";
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
-const creatingStore = useCreatingStore();
-const layers = { LayerMnemonic, LayerPrivatekey };
+const layers = { LayerMnemonic, LayerKeystore };
 const componentName = computed(() => {
   return route.params?.component;
 });
 
 function сloseCreation() {
   router.push("/wallet/create");
-  creatingStore.resetState();
 }
-
-onMounted(() => {
-  creatingStore.creationStarted();
-});
 </script>
 
 <style scoped>

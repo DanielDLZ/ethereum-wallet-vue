@@ -2,6 +2,8 @@
 
 Just my pet project
 
+Clone of [MyEtherWallet](https://www.myetherwallet.com/)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
@@ -37,3 +39,5 @@ npm run build
 ```sh
 npm run lint
 ```
+
+

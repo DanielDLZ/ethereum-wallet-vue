@@ -13,7 +13,7 @@ export default function consoleDef() {
 
   console.log("%c" + str, "background: #222; color: #ffd800; font-size: 10pt");
   console.log(
-    "%c" + "DONT PASTE HERE ANY CODE PLEASE THIS IS NOT SAFE!!!!!!!!!!!!!!!",
+    "%c" + "DONT PASTE HERE ANY CODE THIS IS NOT SAFE!!!",
     "background: #222; color: #ffd800; font-size: 16pt;"
   );
 }
